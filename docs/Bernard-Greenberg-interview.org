@@ -1,0 +1,614 @@
+* A note to the reader
+
+This article is an /impromptu/ interview with Bernard Greenberg, the
+creator of Multics Emacs, about various aspects of the development of
+that editor - mainly social and conceptual, as the technical ones were
+already covered in the author's paper titled [[https://multicians.org/mepap.html][Multics Emacs: The
+History, Design and Implementation]].
+
+It is a result of a fortunate series of accidents, which were
+initiated by my attempt to prepare a presentation explaining the
+concept of Emacs. Multics Emacs was mentioned in various important
+sources, including Richard Stallman's paper describing his experiences
+with the development of the GNU Emacs, as well as in the interview
+with James Gosling, who explicitly pointed to his experience with
+Multics Emacs as the key motivation for the development of Emacs for
+UNIX.
+
+I tried to find a picture of the author of Multics Emacs - preferably
+from the times when it was still being developed - to include in my
+presentation. However, this turned out to be very hard.
+
+Fortunately, it was very easy to find the [[https://bernardgreenberg.com/][BernardGreenberg.com]] website,
+which claimed to have been designed in 2021, but whose set of stylistic
+choices is a clear reference to the early web of the 1990s. 
+
+Among various eye-and-mind-candies, such as a green-tinted photo of an
+iceberg, there was a link to a subpage containing an instruction how
+to assemble an operational e-mail address that could be used to
+contact the author.
+
+I did just that, and asked for the photo. But what I got in return,
+exceeded my wildest expectations. I got an opportunity to learn
+first-hand story of the evolution of the concept of Emacs. But, most
+importantly, I got the opportunity to correspond with this truly
+remarkable person.
+
+I believe that the story told by Bernard will be interesting to
+everyone who's concerned with the history of computation
+- which is why I asked him if it's OK to share it beyond our
+mailboxes. I think I'm not the only one who's glad that he
+agreed.
+
+-- Panicz Maciej Godek, March 2024
+
+* BERNIE
+
+(25 March 2024)
+I've reorganized Maciek's questions into a more chronological flow,
+trying to expound in parallel Multics' career at MIT, my career with
+Multics, what I can speak of of the origins of Emacs and Emacs-like
+editing paradigms at MIT, the advent of Emacs on Multics, and how it
+came to relate to Multics, Honeywell Information Systems (for which
+both I "and Emacs" worked) and those at MIT who were my connections to
+the AI lab and an initial audience.
+
+"BERNIE" text Copyright (c) 2024 Bernard Greenberg
+
+https://www.multicians.org/mepap.html (1979) remains the definitive
+contemporary account.
+
+* MACIEK
+
+I read in Richard Stallman's biography that TECO Emacs was a sort of a
+commune, where people were sharing their contributions freely.
+
+This idea is at the core of the GNU Project as well, including GNU
+Emacs - although there was a controversy. A few years ago James
+Gosling gave an interview where he claimed that Stallman "stole his
+(unix) Emacs" that was being commercially maintained by UniPress,
+although Gosling's Emacs was also shipped with contributions from
+other programmers.
+
+What was the situation with Multics Emacs?  After all, Honeywell is a
+commercial enterprise. Did they also try to commercialize Multics
+Emacs? Or did they just treat it as a nice feature that increased the
+attractiveness of Multics?  Was there any sort of a 'commune' around
+Multics Emacs?
+
+* BERNIE
+
+TECO Emacs was a day-to-day tool at the MIT AI lab. /All/ software there
+was "communal", and everyone who worked there who felt a need to modify
+software did so.  There was no "access control" (in the Unix (actually
+Multics) sense), nor were tools produced there thought of as products
+(although tools such as TECO and Emacs were shared freely with other groups
+with DEC PDP-10's). This rarely caused conflicts, but on occasion did. I
+did not work there, but the lab was across the Tech Square plaza from
+CISL, Honeywell's Cambridge Information Systems Laboratory, where I worked,
+and I had many friends in the AI lab and other MIT organizations,
+most importantly, SIPB, the Student Information Processing
+Board (pronounced "Sip-Bee"), in which I was active.
+
+This photograph of myself and many SIPB members is contemporary
+with the beginnings of Multics Emacs:
+
+https://bernardgreenberg.com/Subway/Dec1978Portrait.html
+
+Both Emacsen, as it is written, arrived before the age of retail
+software products. People didn't yet have computers at home.  If a
+university or other large organization procured a Multics system (for
+a very large sum) they got all the software for free, including Emacs
+(once it was incorporated). Almost all the Multics software, including
+the OS, was the product of the Cambridge lab, CISL, at the
+aforementioned location, where I (and slightly-older masters I
+considered my mentors) worked, on nothing but Multics.  Our job was to
+develop and continue Multics, i.e., to work towards a better Multics.
+Once Emacs got off the ground, it was clear that it would do just
+that.
+
+Corporate Honeywell at the time considered CISL a gaggle of weird
+hippies and liberals and MIT students etc. ... (all true), a sort of
+foreign outpost, far from their corporate culture out of Phoenix, Arizona
+(where there was a Multics group, too, sort of peripheral to CISL, and
+involved with testing and release) and "conventional" computer product
+lines.  Emacs became part of the Multics hardware/software product.
+
+At first, I alone controlled what went in Emacs. I had anointed three
+/Unteremacsmeister/'s, Bill York, Gary Palter, and Richard Lamson (of
+which only Bill was a Honeywell employee), whose regular contributions
+and input I sought and trusted greatly. Completely unlike the MIT AI
+lab, control of what went into the Multics product was highly
+formalized and official, and included official peer auditing.
+Although CISL was indisputably a "Lab" (the L of CISL), it was one
+that, unlike the MIT AI lab, produced a commercial product (i.e., Multics
+software). The first /Emacsmeister/ following my departure from Honeywell was
+Richard Soley. (Richard sadly passed away last fall (2023)).
+
+Early on, Multics Emacs became wildly popular among not only Honeywell
+Multicians, but customer sites, in spite of its extreme
+resource-consumption because of its high interactivity.  There was
+nothing else in Multics like it, because there simply were no "video
+oriented applications", unlike the MIT AI lab where video tool were
+ubiquitous, and there were many similar TECO-embedded "editors" (as
+already mentioned), all of which have since been forgotten.
+
+So in the AI lab context, "Emacs" was the best, most comprehensive,
+best documented, etc.  of many video-oriented TECO packages (mostly
+personal projects), but in the Multics context, Emacs was the only
+ambassador from a completely foreign and seductive video world, which,
+not its user interface design, was its main source of value.
+
+* MACIEK
+
+How did you get into the development of Multics Emacs?
+
+* BERNIE
+
+The long posted paper, mepap.html https://multicians.org/mepap.html
+goes into that at great depth.
+
+
+** We have to start with my pre-Emacs computation background
+
+Setting my significant non-computer interests aside (although they do
+connect at points, music and the New York Subway), my dream was to
+become an operating-systems adept and wizard.  In High School and
+College (mid, late 1960’s in New York City) I inferred that the IBM
+360 in its multiple models was the be-all and end-all of operating
+systems and wizardry, especially to "top of the line" system, OS/360
+(I have since learned that I was not the only person wowed by the
+pointer-block diagram hanging on a wall).
+
+For the summer of 1969, I worked with a now completely-forgotten
+private commercial time-sharing system on the GE-400 in the
+sub-basement of the Empire State Building. The GE-400 had nothing in
+common with the GE-600 (which I was to meet at MIT) except some
+details of the I/O controller, but I attained very deep knowledge (the
+Spanish have a verb, /profundizar/) of the internals of their very
+trade-secret operating system by fully decoding an octal core dump
+(which included the executive's executable code) over several months.
+In spite of its ingenious techniques for scheduling serial reuse of
+non-reentrant code, it taught me less about time-sharing than I
+imagined.
+
+During the last year of college (1970-71), I worked very extensively
+with the IBM 1130, IBM's minicomputer sibling of the 360, writing
+private operating system enhancements and teaching these skills to
+others, while craving the IBM 360 a mile away with which it, on rare
+occasion, communicated.  Editing was accomplished by punching and
+shuffling 80-column cards.
+
+I arrived at MIT in 1971 so deluded, whereupon Robert Frankston (who now
+lives less than a mile from me here in suburban Boston) was already a
+Multics wizard, rapidly convinced me to forget about IBM machines
+and work on Multics. I did, first alongside him as a grad student 1971-4,
+but rapidly aspired to count myself among the professional Multics
+developers, some of whom had worked for General Electric, some for
+MIT, but all of whom went over to Honeywell when they bought the GE
+computer division in 1970, or in the following few years.  I joined
+CISL in 1974. I absolutely did fulfill my dream to become a master
+operating-systems adept on Multics, at first studying at the feet of
+great masters there, but by the time I left in 1980 (by which time
+/they/ had left, see below), having become their peer.
+
+Multics and its Alexandria of published papers about its theory and
+practice was a whole new world for me. I didn't have to decode an
+octal dump, but only sit in the "listings room" until satiated...
+
+* MACIEK
+
+I know that MIT was one of the epicenters of the computer revolution.
+How did Multics fit into that?
+
+* BERNIE
+
+The question immediately asked is the history of Multics, which is
+told in full at https://multicians.org. Multics was the "follow-on"
+system to CTSS (the "Compatible Time-Sharing System" on the IBM 7094),
+developed in the early 60's and one of the very first "time-sharing"
+systems in existence.  Multics ("Multiplexed Information and Computing
+Service") was envisioned as a "computer utility" for large numbers of
+people, although networking was not in the original vision; the
+ARPANET (predecessor of the internet) evolved later, and MIT's
+Multics was an original node of it.
+
+Multics was jointly developed by MIT, the Bell Telephone unit that
+later detached and went on to develop Unix (as a reaction), and
+General Electric, which made the machine, specially modified to be
+able to operate in this manner. It was developed from a forest of
+serious design and research documents crafted before the first line of
+code was written, but only a fraction of the original grandiose vision
+was actually realized.
+
+The initial Multics system on the GE-645, and its "follow-on" on the
+Honeywell 6180 (both machines designed for Multics specifically)
+became utilities of the large MIT community, with broad user bases, as
+well as the beta test site for new OS releases.
+
+** The birth of Multics Emacs
+
+As I worked on Multics during the day, often in the evening I would
+“hang out” with the "kids" (mainly undergraduates) at SIPB (I was in
+my 20's).  It was there I met not just Dan Weinreb (1959-2012) and
+Dave Moon, but many others who remain my friends to this day.  SIPB
+was something between a computer-help organization, donating mainframe
+time to needy students (usually Multics), and a social club for
+computer nerds.  Most, if not all, of these people, were occasional
+Multics users, and officially gave away funded time to students.  That
+is, they used the flagship Multics installation at MIT, as
+"customers".  They were very great fans of the advanced features of
+Multics, e.g., the then-novel process and access control models (from
+which Unix got them), the ease of writing new commands, etc. Multics
+was, at that time, very forward-looking in a world dominated by IBM
+mainframes and (then relatively) tiny minicomputers.  They admired
+Multics, but the many who had worked at the AI Lab knew that Multics
+had light-years to go in terms of being a responsive user environment,
+and so were critical and dismissive of what it lacked.
+
+Nothing was more emblematic of the discrepancy than Emacs (on ITS),
+the workaday tool of everyone at the AI lab.  It was in this point in
+time that I experimented with creating a video editor (not at first
+called “Emacs”) on Multics, as a private research project, egged on
+and supported by these enthusiastic SIPB people.  It was not initially
+a product, but just my personal toy.  But Multicians who saw it were
+flabbergasted.  As the longer paper explains, it only eventually
+became “Emacs” and part of the Multics product.  The community of
+users ultimately included customers at Multics sites around the
+country and the world, but I don’t remember any contributions to the
+code outside of the MIT-centric community and CISL itself, which at
+the time I started Emacs (March 1978) also included Bill York, my
+right-hand emacsmeister (he was SIPB chairman at roughly that time, an
+undergrad).
+
+So Multics Emacs represented a bridge between these two communities of
+which I was part, CISL, and SIPB.  (Although most of CISL did not have
+a favorable opinion of all these noisy kids who came to visit Bernie
+all the time, and SIPB people’s attitude towards “Honeywell” was not
+warm, because of the issues just cited, eventually, other SIPB or
+once-SIPB people joined CISL (e.g., Charlie Hornig, and two
+Emacsmeisters, Barry Margolin and the late Richard Soley.)
+
+Suffice it to say that Multics Emacs was a completely unanticipated
+development in Multics.  It haughtily rejected the PL/I language that
+was one of the bases of Multics, relying on Lisp, something not even a
+product (special deals had to be made with MIT), it had its own I/O
+system, extension paradigm, and everything else, something completely
+foreign, out-of-model, etc. but uniquely attractive, which wrought
+miracles.
+
+The decision to use Lisp is considered in the 1979 paper cited at top. 
+
+In 1980, I gave a paper on this work at a Honeywell Corporate,
+world-wide conference, not just Honeywell computers.  My presentation
+won first prize. At the end of 1980, I quit Honeywell, for reasons
+discussed below, and joined the nascent Symbolics as a founder.
+
+Oh, yes, I taught a popular Lisp course at MIT in January for several
+years, ("extra-curricular", not accredited teaching efforts are
+offered in January) starting in 1976, under the auspices of SIPB. At
+one point, it attracted 250.
+
+* MACIEK
+
+What was the state of Emacs when you started developing Multics Emacs?
+How did Multics Emacs compare to other editors available for Multics?
+
+* BERNIE
+
+I first encountered (ITS) EMACS at the AI lab, where the late Dan
+Weinreb helped me edit the notes for the aforementioned Lisp course.
+It was then just one suite of "editor macros" (see below) for
+"Control-R mode TECO", and there were others, all of which have been
+forgotten - TMACS, TECMAC – I don't remember other names.
+
+EMACS was simply the largest, most popular, most capable, and most
+consistent and documented set of such "macros", largely due to
+Richard Stallman's efforts.
+
+It is really necessary to understand how TECO worked in a video
+environment, showing a split screen, with the editor commands typed in
+the lower window, and the "buffer"in the upper window, which would
+only be "redisplayed" when a command was completed in the lower
+window.  This seems so obvious 50 years later, as to not deserve
+mention.  But direct-access-to-memory video "terminals", the so called
+"(Tom) Knight TV's", were really a very advanced computer feature not
+at all common outside of advanced research labs.  At that time,
+Multics offered only printing-terminal editors, where a command might
+be "s/foo/bar/p", i.e., "substitute bar for foo and then print out the
+line so I can check".
+
+A "Macro" in the TECO context meant a TECO "register" (i.e, addressible
+storage) full of TECO commands, executed when you invoked its name in
+the "mm" command in the command window.  These were usually user-coded
+"subroutines" to do domain-specfic things, such as balance Lisp
+expressions.
+
+"Control-R mode", for "real-time', introduced sometime in the 70's,
+was a breakthrough that flipped the editor into a mode controlled not
+by commands typed in the lower window, but by reading single keyboard
+characters and running some specific "macro" (effectively "function")
+for each, i.e., you could essentially write a user-interface with this
+technique.  All of these packages, TMAC, TECMAC, EMACS, were just
+that, and thought of as "control-R mode packages", not "editors".  The
+ability to display text and update it dynamically as commands were run
+by keystrokes (not command type-in) was all Control-R mode TECO, not
+Emacs per se!  Emacs was, initially, simply the best of such packages.
+
+On Multics, and most other systems, /none of that existed/, not
+direct-memory-access video screens, video TECO (or video /anything/),
+"control-R mode" or a context where such a concept could be
+meaningful, etc.  So when I created a baby real-time video editor, I
+think I called it "Multics RTVE" (real time video editor) or
+something, but ultimately, and soon, adopted the Emacs command set,
+and "baptized" it Multics Emacs.  But it was not the architecture and
+command set and other directions created by Stallman in his macro set
+that distinguished it on Multics, but the fact that it was a "video
+editor" at all (using off-the shelf serial-communication video
+terminals) and the only foot in the "video world" Multics had.
+
+* MACIEK
+
+I think Lars Brinkhoff also mentioned something about Tom Knight's
+TVs, but I'm not sure about their nature.  I'd be guessing that they
+weren't mass-produced, but they were adapted from regular TV sets, and
+mostly used by MIT hackers?
+ 
+Did the AI lab also use commercially produced CRT terminals?
+
+* BERNIE
+
+The "Knight TV's" were not television sets – they were called that as
+a slang term for them – they were the product of a company called
+Grennell, if I recall, and were "advanced bitmap display
+terminals/monitors" which required some kind of channel access to
+primary memory of the system controlling them (just like monitors on
+personal computers now, but the "computer" was a shared mainframe)–
+they were not serial "terminals". They were very wonderful IMHO.
+
+Lars Brinkhoff is a historian of this system, and he contributes:
+
+#+BEGIN_QUOTE
+      The MIT AI lab had an early raster display system.  It was constructed
+      mainly by Tom Knight around 1973, urged by John McCarthy [the inventor
+      of Lisp] to make something similar to what the Stanford AI lab had.
+      The system ran on a dedicated PDP-11, attached to the AI lab PDP-10
+      through a shared memory interface.  It had RAM boards for a dozen or
+      so frame buffers, shared between 30 terminals around the lab.
+#+END_QUOTE
+
+It was indeed possible to use TECO/EMACS on commercially-produced
+CRT terminals, say, at home.  ITS had a generic output system which
+produced cursor-control and output commands in a formalism called
+TDCODEs.  A very complex OS component called CRTSTY (CRT
+Pseudo-teletype) had CRT-terminal-model specific knowledge of how to
+translate TDCODES into the code jargon of every supported terminal.  If
+the "remote terminal" was another ITS ("Incompatible time sharing")
+machine (the OS at the AI lab), they would simply exchange TDCODES in
+an internet protocol named "SUPDUP" ("super-duper").
+
+Interestingly, Dan Weinreb and I invented a variant of this protocol
+for specifically supporting interspersed Multics Emacs interaction which, too,
+became an official TELNET protocol,
+https://datatracker.ietf.org/doc/html/rfc749 . For the first,
+unofficial, version of this, Dan suggested the name PYZ, "Protocol of
+the Youngers of Zion", a singularly ingenious pun on the name of the
+famous Czarist antisemitic forgery /The Protocols of the Elders of
+Zion/.
+
+
+Rather than a CRTSTY-like octopus, Multics Emacs featured an
+extensible collection of so-called "ctls", little Lisp programs that
+implemented a common cursor-control and text manipulation interface
+with commands specific to one type of CRT terminal.
+
+* MACIEK
+
+Did Multics Emacs also have documentation capabilities
+similar to those that are present in the GNU Emacs, such as
+"describe-key", and did it provide a "hyper-textual" browser for its
+source code? And did it also offer "global-set-key" and customization
+through user's own initialization files?
+
+* BERNIE
+
+Yes, Multics Emacs had all that, describe-key and similar, custom
+key-bindings, etc. and customization via writing your own Lisp code
+according to the Extensions manual was par for the course.
+
+In fact, I think I thought of the Macro facility (^X( and ^X)) before
+Stallman did, and those are my key bindings.  But it has been pointed
+out that such features were common in various CAD programs and
+others. Incidentally, some of my function/macro names later showed up
+in GNU Emacs (e.g., "save-excursion").
+
+* MACIEK
+
+I still use it often, and it's a real life saver!
+Did it also have C-x C-e for Lisp evaluation?
+
+* BERNIE
+
+It had alt-alt (esc-esc) for Lisp Evaluation; ITS certainly had
+alt-alt for TECO evaluation first.
+It had alt-alt (esc-esc) for Lisp Evaluation.
+
+* MACIEK
+
+There's still a few questions that I have,
+and I couldn't get answers from anyone, so maybe you could help me
+with those as well - about the beginnings of TECO Emacs.
+Wikipedia credits Guy Steele and David Moon (I guess the one from the
+subway trip picture) for creating Emacs.  
+
+* BERNIE
+
+Dave Moon is a computer giant (IMO) whom I have been privileged to
+know for fifty years, i.e., since he first arrived at MIT.  In fact,
+his (and Dave Reed’s) working on building Multics Maclisp (for MIT,
+not Honeywell) at the time I was a grad student there was what first
+got me interested in Lisp.  While I was not witness to his
+contributions to ITS Emacs, he was a source of info when I did my work
+on Emacs; when I began to write the redisplay, the central arcanum of
+Emacs dharma, he was at my side, and the comment reads “inceptus Luna
+meo adjutorio” (begun with Moon as my help)
+
+The comment can be found at
+https://github.com/dancrossnyc/multics/blob/main/library_dir_dir/system_library_unbundled/source/bound_multics_emacs_.s.archive/e_redisplay_.lisp
+
+#+BEGIN_SRC
+;;;               Greenberg, March 1978
+;;;               3/6/78 inceptus Luna meo adjutorio.
+;;;               4/19/78 duas fenestras feci.
+#+END_SRC
+
+The tradition of Latin change comments was one I kept
+until I left CISL, when the late Richard Soley Homerically marked
+“the rosy-fingered dawn of a new era” in English.
+
+* MACIEK
+
+In Stallman's biography, there's an alleged quote from Steele: "As I
+like to say, I did the first 0.001 percent of the implementation, and
+Stallman did the rest," Is it possible to say what was the nature and
+scope of these 0.001 percent of work?
+
+* BERNIE
+
+I don't know the boundary between Guy Steele's contributions and
+Stallman's, but I do know that Stallman did the "lion's share" of the
+work making a consistent "product" with consistent philosophy and
+interface. I was not there (the AI lab) then or at any other time, so
+I was not witness to it.
+
+The important thing to emphasize is that ITS (TECO) Emacs was an
+ad-hoc program in an ad-hoc, free-for-all laboratory environment which
+anyone could edit or change or contribute to, but did not see much use
+outside of that one building of the AI lab and people associated with
+it (there was some).  Multics Emacs started as an ad-hoc hack by me,
+and those friends I mentioned, but was incorporated into the Multics
+product once its virtue and potential became obvious. GNU Emacs is
+quite something different from either in terms of "business model".
+
+Again, within the context of the AI Lab, "EMACS" (as it was spelled
+then, all caps) was the work of Stallman, Steele, etc., based on
+Control-R mode TECO, which was not their work or idea (I don't know
+whose it was). But to the outside world, including Multics, "Emacs"
+(once my work became popular) meant "real time video-based editor with
+programmable keystrokes and automatic incremental redisplay", and
+"Stallman" (wrongly, I think) gets credit for the whole ball of wax.
+It's sort of like "Nikola Tesla indeed invented 3-phase electricity
+(arguable Mikhail Dolivo-Dobrovolsky did, too)", but not electricty,
+transformers, or alternating current --but to someone who had never
+seen electricity in their town, and Tesla's 3-phase current was
+extended to that town, they would logically credit Tesla with the
+whole thing.  Yes, Stallman is absolutely the father of Emacs per se,
+but he did not invent the tower of technology under it, which, like
+all innovation, is new to those who had never seen it, and over-credit
+Stallman for all of it.  I don't think any of this is in dispute, but
+this problem arises all over science and technology.  Did Robert
+Fulton invent the first steamship? Maybe, but a huge amount was known
+about building ships before he put a boiler and engine on one.
+
+* MACIEK
+
+What sort of computer setup do you use nowadays?  Do you still use
+some variant Emacs?
+
+* BERNIE
+
+A Mac user for the last 11 years, I use Aquamacs, which is a hosting
+of GNU Emacs in a Mac-Environment framework, for editing Python (most
+frequently), JavaScript, and HTML.  For significant literary text, I
+use Libre Office, because I really need typography and images.  For
+graphic applications like my subway signal simulator (NXSYS,
+https://github.com/BernardGreenberg/NXSYS), I use XCode, the native
+Mac IDE, which I find pretty spectacular.  I don’t develop on Windows
+except to check releases of NXSYS already debugged on the Mac (or do
+their windowy parts). With C++ I can go can go either way (Aquamacs or
+XCode, depending). I don’t do any Lisp these days, except for the
+Lisp-expressed scenario logic in the subway system.  I'm using
+Aquamacs now (in "org mode", which is new for me) to edit this.
+
+For email I generally use the Outlook web client which receives my
+mail, but for complex answers, I use the Apple/Mac “Notes”
+app — just text buffers, but with some formatting.
+
+For years (late 1980's-early 2000s) I had my own Windows email client,
+using standard edit controls.  I actually don't recall what language I
+wrote it in, but it used Windows API's, so it was likely C, not C++; I
+had my own email server and "text justifier" as well, both written in
+8086 assembler. I used Lugaru's Epsilon, and Emacs-model editor on the
+PC, for coding at that time.
+
+* MACIEK
+
+After having so much experience with Lisp, what do you think about the
+contemporary programming ecosystems?
+ 
+I recently read this piece in the 25-th anniversary edition of Levy's
+Hackers:
+
+"Richard Greenblatt tells me he has a rant to deliver. Uh-oh.  After
+all these years, is he finally going to complain about the way I
+talked about his personal hygiene in the early chapters of Hackers? To
+my relief, Greenblatt is more concerned with what he views as the
+decrepit state of computing. He hates today’s dominant coding
+languages like HTML and C++ . He misses LISP, the beloved language
+that he worked with back when he was at MIT. “The world is screwed
+up,” he says, before launching on a technical analysis of the current
+state of programming that I can’t even hope to follow."
+
+Do you share these ideas?
+
+* BERNIE
+
+I think I disagree.  The tasks needed to be solved by programming
+languages have evolved, as well as conceptions of what the issues in
+programming languages are.  Most of the things I could do easily in
+Lisp I can do in Python, although writing macro embedded DSL's
+("domain specific languages") is not among them (and that was
+important to both of my large Lisp systems, ifd (interpret fdump) and
+emacs).
+
+When I look at the latest version of Apple's "Swift", optimized for
+writing iPhone apps, it is so far from either a sequential or
+functional language, with its "ObservedObject"s and ".onChange"
+handlers and auto-updating "Views" that I think it represents such a
+radical departure from a Von Neumann model that I'm not sure it's
+better, but to claim that there is no progress or exploration in
+programming languages, or that they are all more complex forms of C,
+would be wrong.  Modern C++ (C++20) is indeed "a more complex form of
+C" that is actually very powerful, but the amount of brain power
+needed to understand the evolved templating and prototype-matching
+rules may have thrown the baby out with the bathwater (in terms of
+programming constructs that make languages easier to use).  This is,
+of course, a complex and ambivalent subject, but to decry it all as
+negative progress since early lisp (how about Sussman and Steele's
+much-improved Lisp, SCHEME, or Hickey's Clojure?) seems flippant.
+
+* MACIEK
+
+How did you end up leaving Honeywell?
+
+* BERNIE
+
+I, like both of my main “masters”, Steve Webber and the late Noel
+Morris (also a great lover of Bach and the organ, and a recorder
+player), finally got fed up with Honeywell’s seeming grudging
+acceptance of Multics, and left. While most of them left to Prime, in
+1980 I was invited to join the being-founded Symbolics (a maker of
+Lisp machines) with Dan Weinreb, Dave Moon, Howard Cannon and others I
+looked up to at the AI lab, and jumped at the opportunity.
+
+Honeywell was/is a very conservative company who really didn’t know
+what to do with Multics, how to promote it, continue it, fit it into
+their product line, adapt it to changes in the industry, etc.
+… it was as though (at that time) they hoped it would "just go away".
+Everyone at CISL did nothing but Multics, and didn’t care about any
+other part of Honeywell.  Some of us thought "Save Multics: Buy
+Honeywell!", i.e., a hope for another more enlightened acquisition.
+
+But in truth, the day of extinction for huge mainframe dinosaurs with
+specialized hardware for specialized software was on the horizon,
+as active little personal computers took over the ecology.
